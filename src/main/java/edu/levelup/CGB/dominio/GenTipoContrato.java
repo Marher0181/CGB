@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.levelup.CGB;
+package edu.levelup.CGB.dominio;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,12 +10,10 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
+
 import lombok.Data;
 
 /**
@@ -30,23 +28,26 @@ public class GenTipoContrato implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @Column(name = "ID_TCO")
     private Long idTco;
+    
     @Column(name = "DESCRIPCION_TCO")
     private String descripcionTco;
+    
     @Column(name = "ELIMINADO_TCO")
     private String eliminadoTco;
+    
     @Column(name = "USUARIO_TCO")
     private String usuarioTco;
+    
     @Column(name = "FECHA_TCO")
     @Temporal(TemporalType.DATE)
     private Date fechaTco;
+    
     @Column(name = "IP_TCO")
     private String ipTco;
     
     
-/*
     public GenTipoContrato() {
     }
 
@@ -101,7 +102,7 @@ public class GenTipoContrato implements Serializable {
     public void setIpTco(String ipTco) {
         this.ipTco = ipTco;
     }
-*/
+
     @Override
     public int hashCode() {
         int hash = 0;

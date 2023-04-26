@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.levelup.CGB;
+package edu.levelup.CGB.controller;
 
+import edu.levelup.CGB.service.GenTipoContratoService;
+import edu.levelup.CGB.dominio.GenTipoContrato;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,7 @@ public class GenTipoContratoController {
     @Autowired
     GenTipoContratoService gentipocontratoservice;
     
-    @GetMapping
+    @GetMapping("/hola")
     public String getMessage(){
         return "Hola";
     }

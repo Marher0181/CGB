@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.levelup.CGB;
+package edu.levelup.CGB.service;
 
+import edu.levelup.CGB.dominio.GenTipoContrato;
 import edu.levelup.CGB.exceptions.NonexistentEntityException;
 import edu.levelup.CGB.exceptions.PreexistingEntityException;
 import java.io.Serializable;
