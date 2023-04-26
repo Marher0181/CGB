@@ -28,15 +28,24 @@ public class GenTipoContratoController {
     GenTipoContratoService gentipocontratoservice;
     
     @GetMapping("/hola")
-    public String getMessage(){
-        return "Hola";
+    public String mensaje(){
+        return "Hola mundo";
     }
     
-    @GetMapping("/Findall")
-    public ResponseEntity<List<GenTipoContrato>> buscarTodo(){
-        return ResponseEntity.ok(gentipocontratoservice.findGenTipoContratoEntities());
-        
+    @GetMapping
+    public List<GenTipoContrato> getGenTipoContrato() {
+        return gentipocontratoservice.getGenTipoContrato();
     }
     
+    @GetMapping("/buscarxid/{id}")
+    public GenTipoContrato getTipoContratoById(@PathVariable Long id){
+        return gentipocontratoservice.getGenTipoContratoById(id);
+    }
     
+    @PostMapping
+    public ResponseEntity<GenTipoContrato> addTipoContrato(@RequestBody GenTipoContrato gentipocontrato){
+        GenTipoContrato saveGenTipoContrato = gentipocontratoservice.saveGenTipoContrato(gentipocontrato);
+        return ResponseEntity.ok(saveGenTipoContrato);
+    }
+
 }
