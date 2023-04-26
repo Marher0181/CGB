@@ -32,7 +32,7 @@ public class GenTipoContratoController {
         return "Hola mundo";
     }
     
-    @GetMapping
+    @GetMapping("/GetTipoContrato")
     public List<GenTipoContrato> getGenTipoContrato() {
         return gentipocontratoservice.getGenTipoContrato();
     }
@@ -42,8 +42,8 @@ public class GenTipoContratoController {
         return gentipocontratoservice.getGenTipoContratoById(id);
     }
     
-    @PostMapping
-    public ResponseEntity<GenTipoContrato> addTipoContrato(@RequestBody GenTipoContrato gentipocontrato){
+    @PostMapping("/add")
+    public ResponseEntity<GenTipoContrato> saveGenTipoContrato(@RequestBody GenTipoContrato gentipocontrato){
         GenTipoContrato saveGenTipoContrato = gentipocontratoservice.saveGenTipoContrato(gentipocontrato);
         return ResponseEntity.ok(saveGenTipoContrato);
     }

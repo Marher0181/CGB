@@ -15,27 +15,44 @@ import org.springframework.stereotype.Service;
 
 /**
  *
+ *
+ *
+ *
  * @author marher
  */
-
 @Service
 public class GenTipoContratoService implements Serializable {
 
-    
     @Autowired
     GenTipoContratoRepository gentipocontratorepository;
-    
-    public List<GenTipoContrato> getGenTipoContrato(){
+
+    public List<GenTipoContrato> getGenTipoContrato() {
         return gentipocontratorepository.findAll();
     }
-    
-    public GenTipoContrato getGenTipoContratoById(Long id){
+
+    public GenTipoContrato getGenTipoContratoById(Long id) {
         return gentipocontratorepository.findById(id).orElse(null);
     }
 
     public GenTipoContrato saveGenTipoContrato(GenTipoContrato genTipoContrato) {
-        return gentipocontratorepository.save(genTipoContrato); 
+        return gentipocontratorepository.save(genTipoContrato);
     }
-    
-    
+
+    public void deleteGenTipoContratoById(Long id) {
+        gentipocontratorepository.deleteById(id);
+    }
+
+    public GenTipoContrato updateGenTipoContrato(Long id, GenTipoContrato genTipoContrato) {
+        GenTipoContrato existingGenTipoContrato = gentipocontratorepository.findById(id).orElse(null);
+        if (existingGenTipoContrato != null) {
+            existingGenTipoContrato.setDescripcionTco(genTipoContrato.getDescripcionTco());
+            existingGenTipoContrato.setEliminadoTco(genTipoContrato.getEliminadoTco());
+            existingGenTipoContrato.setUsuarioTco(genTipoContrato.getUsuarioTco());
+            existingGenTipoContrato.setFechaTco(genTipoContrato.getFechaTco());
+            existingGenTipoContrato.setIpTco(genTipoContrato.getIpTco());
+            gentipocontratorepository.save(existingGenTipoContrato);
+        }
+        return existingGenTipoContrato;
+    }
+
 }
