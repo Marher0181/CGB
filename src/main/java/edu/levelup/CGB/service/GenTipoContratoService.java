@@ -42,17 +42,16 @@ public class GenTipoContratoService implements Serializable {
         gentipocontratorepository.deleteById(id);
     }
 
-    public GenTipoContrato updateGenTipoContrato(Long id, GenTipoContrato genTipoContrato) {
+    public GenTipoContrato updateGenTipoContrato(Long id) {
         GenTipoContrato existingGenTipoContrato = gentipocontratorepository.findById(id).orElse(null);
         if (existingGenTipoContrato != null) {
-            existingGenTipoContrato.setDescripcionTco(genTipoContrato.getDescripcionTco());
-            existingGenTipoContrato.setEliminadoTco(genTipoContrato.getEliminadoTco());
-            existingGenTipoContrato.setUsuarioTco(genTipoContrato.getUsuarioTco());
-            existingGenTipoContrato.setFechaTco(genTipoContrato.getFechaTco());
-            existingGenTipoContrato.setIpTco(genTipoContrato.getIpTco());
+            existingGenTipoContrato.setDescripcionTco(existingGenTipoContrato.getDescripcionTco());
+            existingGenTipoContrato.setEliminadoTco(existingGenTipoContrato.getEliminadoTco());
+            existingGenTipoContrato.setUsuarioTco(existingGenTipoContrato.getUsuarioTco());
+            existingGenTipoContrato.setFechaTco(existingGenTipoContrato.getFechaTco());
+            existingGenTipoContrato.setIpTco(existingGenTipoContrato.getIpTco());
             gentipocontratorepository.save(existingGenTipoContrato);
         }
         return existingGenTipoContrato;
     }
-
 }

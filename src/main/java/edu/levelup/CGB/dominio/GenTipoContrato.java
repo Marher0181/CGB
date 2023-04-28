@@ -9,6 +9,7 @@ package edu.levelup.CGB.dominio;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -108,24 +109,26 @@ public class GenTipoContrato implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idTco != null ? idTco.hashCode() : 0);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.idTco);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GenTipoContrato)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        GenTipoContrato other = (GenTipoContrato) object;
-        if ((this.idTco == null && other.idTco != null) || (this.idTco != null && !this.idTco.equals(other.idTco))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final GenTipoContrato other = (GenTipoContrato) obj;
+        return Objects.equals(this.idTco, other.idTco);
     }
-
+    
     @Override
     public String toString() {
         return "edu.levelup.CGB.GenTipoContrato[ idTco=" + idTco + " ]";
