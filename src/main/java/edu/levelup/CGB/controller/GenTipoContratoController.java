@@ -56,22 +56,19 @@ public class GenTipoContratoController {
         return "Usuario " + id + " eliminado exitosamente";
     }
 
-    @PutMapping("/gentipocontrato/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<GenTipoContrato> updateGenTipoContrato(@PathVariable Long id, @RequestBody GenTipoContrato genTipoContrato) {
-        GenTipoContrato updatedGenTipoContrato = gentipocontratoservice.getGenTipoContratoById(id).map(existingGenTipoContrato -> {
-            existingGenTipoContrato.setDescripcionTco(genTipoContrato.getDescripcionTco());
-            existingGenTipoContrato.setEliminadoTco(genTipoContrato.getEliminadoTco());
-            existingGenTipoContrato.setUsuarioTco(genTipoContrato.getUsuarioTco());
-            existingGenTipoContrato.setFechaTco(genTipoContrato.getFechaTco());
-            existingGenTipoContrato.setIpTco(genTipoContrato.getIpTco());
-            return gentipocontratoservice.save(existingGenTipoContrato);
-        }).orElse(null);
-
+        GenTipoContrato updatedGenTipoContrato = gentipocontratoservice.getGenTipoContratoById(id);
         if (updatedGenTipoContrato != null) {
-            return ResponseEntity.ok(updatedGenTipoContrato);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+            updatedGenTipoContrato.setDescripcionTco(genTipoContrato.getDescripcionTco());
+            updatedGenTipoContrato.setEliminadoTco(genTipoContrato.getEliminadoTco());
+            updatedGenTipoContrato.setUsuarioTco(genTipoContrato.getUsuarioTco());
+            updatedGenTipoContrato.setFechaTco(genTipoContrato.getFechaTco());
+            updatedGenTipoContrato.setIpTco(genTipoContrato.getIpTco());
+            gentipocontratoservice.saveGenTipoContrato(updatedGenTipoContrato);
 
+        }
+        return ResponseEntity.ok(updatedGenTipoContrato);
+
+    }
 }
